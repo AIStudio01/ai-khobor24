@@ -1,0 +1,6 @@
+{
+  "name": "AI Khobor24",
+  "description": "Android app controller for automated Bengali/English AI news pipeline and Blogger publishing",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

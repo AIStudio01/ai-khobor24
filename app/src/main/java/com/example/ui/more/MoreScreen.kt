@@ -24,6 +24,11 @@ fun MoreScreen(viewModel: MainViewModel) {
 
     var selectedSection by remember { mutableStateOf("Menu") }
 
+    if (selectedSection == "ApkBuilder") {
+        ApkBuilderScreen(viewModel = viewModel, onBack = { selectedSection = "Menu" })
+        return
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -47,6 +52,7 @@ fun MoreScreen(viewModel: MainViewModel) {
         ) {
             when (selectedSection) {
                 "Menu" -> {
+                    MoreMenuItem("APK Builder & GitHub CI", Icons.Default.Build) { selectedSection = "ApkBuilder" }
                     MoreMenuItem("Sources & RSS Feeds", Icons.Default.RssFeed) { selectedSection = "Sources" }
                     MoreMenuItem("Categories & Blogger Labels", Icons.Default.Label) { selectedSection = "Labels" }
                     MoreMenuItem("System Logs & Errors", Icons.Default.ReceiptLong) { selectedSection = "Logs" }

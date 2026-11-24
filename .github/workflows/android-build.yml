@@ -23,8 +23,8 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper
 
       - name: Setup Keystores (Debug & Release)
         env:
@@ -48,6 +48,7 @@ jobs:
           STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD != '' && secrets.ANDROID_KEYSTORE_PASSWORD || 'android' }}
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD != '' && secrets.ANDROID_KEY_PASSWORD || 'android' }}
         run: |
+          chmod +x gradlew
           ./gradlew assembleDebug assembleRelease bundleRelease --stacktrace
 
       - name: Generate SHA-256 Checksums
